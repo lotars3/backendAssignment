@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.szymonsmenda.backendAssignment.models.entites.NotesEntity;
 import pl.szymonsmenda.backendAssignment.models.services.NotesService;
 
-@RequestMapping("rest")
 @RestController
+@RequestMapping("rest")
 public class NotesRestController {
 
     @Autowired
