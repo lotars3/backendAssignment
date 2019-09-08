@@ -5,5 +5,6 @@ import org.springframework.stereotype.Repository;
 import pl.szymonsmenda.backendAssignment.models.entites.NotesEntity;
 
 @Repository
-public interface NotesRepository extends CrudRepository<NotesEntity, Integer> {
+public interface NotesRepository extends CrudRepository<NotesEntity, Long> {
+
 }

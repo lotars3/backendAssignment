@@ -21,8 +21,18 @@ public class NotesRestController {
         return ResponseEntity.ok(notesService.getAllNotes());
     }
 
-    @PostMapping(value = "/notes", consumes = "application/json")
+    @PostMapping(value = "/notesEntity", consumes = "application/json")
     public ResponseEntity addNotes(@RequestBody NotesEntity notesEntity) {
+        if (notesEntity.getTitle() == null || notesEntity.getContent() == null) {
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("Title/Content is required");
+
+        }
+        notesService.saveNotes(notesEntity);
+        return ResponseEntity.ok(notesEntity);
+    }
+
+    @PutMapping(value = "/updateNotes", consumes = "application/json")
+    public ResponseEntity updateNotes(@RequestBody NotesEntity notesEntity) {
         if (notesEntity.getTitle() == null || notesEntity.getContent() == null) {
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("Title/Content is required");
 
@@ -37,9 +47,5 @@ public class NotesRestController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping(value = "/notes", consumes = "application/json")
-    public ResponseEntity updateNotes(@RequestBody NotesEntity notesEntity) {
-        notesService.saveNotes(notesEntity);
-        return ResponseEntity.ok(notesEntity);
-    }
+
 }

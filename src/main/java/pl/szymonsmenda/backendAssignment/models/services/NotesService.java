@@ -8,18 +8,18 @@ import pl.szymonsmenda.backendAssignment.models.repositiories.NotesRepository;
 @Service
 public class NotesService {
     @Autowired
-    private NotesRepository notesRepository;
+    private NotesRepository NotesRepository;
 
-    public  Iterable<NotesEntity> getAllNotes(){
-        return notesRepository.findAll();
+    public Iterable<NotesEntity> getAllNotes(){
+        return NotesRepository.findAll();
     }
 
     public void saveNotes(NotesEntity notesEntity){
-        notesRepository.save(notesEntity);
+        NotesRepository.save(notesEntity);
     }
 
-    public void deleteNoteById(int id){
-        notesRepository.deleteById(id);
+    public void deleteNoteById(long id){
+        NotesRepository.deleteById(id);
     }
 
 }

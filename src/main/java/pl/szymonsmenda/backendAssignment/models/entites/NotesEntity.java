@@ -4,9 +4,8 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.envers.Audited;
-import org.hibernate.envers.RevisionTimestamp;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,21 +15,30 @@ import java.util.Date;
 @Data
 @Table(name = "notes")
 @Audited
+@EntityListeners({AuditingEntityListener.class})
+
 public class NotesEntity implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, updatable = false)
+    private Long id;
+    @Column
     private String title;
+    @Column
     private String content;
 
+    @Version
+    private int version;
 
     @Column(name = "create_date", nullable = false, updatable = false)
-    @Temporal( TemporalType.TIMESTAMP )
+    @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     private Date createDate;
     @Column(name = "last_modified_date", nullable = false)
-    @Temporal( TemporalType.TIMESTAMP )
+    @Temporal(TemporalType.TIMESTAMP)
     @UpdateTimestamp
-    private Date  lastModifiedDate;
+    private Date lastModifiedDate;
 }
