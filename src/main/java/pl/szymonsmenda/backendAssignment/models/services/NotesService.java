@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import pl.szymonsmenda.backendAssignment.models.entites.NotesEntity;
 import pl.szymonsmenda.backendAssignment.models.repositiories.NotesRepository;
 
+import java.util.Optional;
+
 @Service
 public class NotesService {
     @Autowired
@@ -12,6 +14,10 @@ public class NotesService {
 
     public Iterable<NotesEntity> getAllNotes() {
         return NotesRepository.findAll();
+    }
+
+    public Optional<NotesEntity> getOneNote(Long id) {
+        return NotesRepository.findById(id);
     }
 
     public void saveNotes(NotesEntity notesEntity) {

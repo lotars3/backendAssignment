@@ -21,7 +21,14 @@ public class NotesRestController {
         return ResponseEntity.ok(notesService.getAllNotes());
     }
 
-    @PostMapping(value = "/notesEntity", consumes = "application/json")
+    @GetMapping(value = "/notes/{id}", produces = "application/json")
+    public ResponseEntity getNoteById(@PathVariable("id") Long id) {
+        return notesService.getOneNote(id)
+                .map(s -> ResponseEntity.ok(s))
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    }
+
+    @PostMapping(value = "/addNotes", consumes = "application/json")
     public ResponseEntity addNotes(@RequestBody NotesEntity notesEntity) {
         if (notesEntity.getTitle() == null || notesEntity.getContent() == null) {
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("Title/Content is required");
