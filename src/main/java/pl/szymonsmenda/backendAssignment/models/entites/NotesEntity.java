@@ -19,8 +19,6 @@ import java.util.Date;
 
 public class NotesEntity implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, updatable = false)
@@ -29,9 +27,6 @@ public class NotesEntity implements Serializable {
     private String title;
     @Column
     private String content;
-
-    @Version
-    private int version;
 
     @Column(name = "create_date", nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)

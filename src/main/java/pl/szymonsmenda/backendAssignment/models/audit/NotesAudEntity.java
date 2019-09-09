@@ -1,4 +1,4 @@
-package pl.szymonsmenda.backendAssignment.models.audit.model;
+package pl.szymonsmenda.backendAssignment.models.audit;
 
 import lombok.Data;
 import org.hibernate.envers.RevisionNumber;

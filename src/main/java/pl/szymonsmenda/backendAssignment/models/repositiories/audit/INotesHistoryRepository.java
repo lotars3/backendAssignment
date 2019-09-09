@@ -9,6 +9,4 @@ import java.util.List;
 public interface INotesHistoryRepository {
 
     List<NotesHistory> listNotesHistoryAudit(Long id);
-
-
 }

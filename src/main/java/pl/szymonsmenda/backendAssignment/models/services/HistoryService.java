@@ -14,6 +14,7 @@ public class HistoryService {
     @Autowired
     private INotesHistoryRepository notesHistoryRepository;
 
-    public List<NotesHistory> getAllHistoryAudit(Long id){
+    public List<NotesHistory> getAllHistoryAudit(Long id) {
         return notesHistoryRepository.listNotesHistoryAudit(id);
-    }}
+    }
+}

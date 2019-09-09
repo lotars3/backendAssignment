@@ -18,7 +18,8 @@ import java.util.stream.Collectors;
 @RequestMapping("history")
 public class NotesHistoryRestController {
 
-    private  final INotesHistoryRepository repository;
+    private final INotesHistoryRepository repository;
+
     @Autowired
     public NotesHistoryRestController(INotesHistoryRepository repository) {
         this.repository = repository;
@@ -27,10 +28,8 @@ public class NotesHistoryRestController {
 
     @GetMapping(value = "/{id}", produces = "application/json")
     public List<NotesHistoryDto> getHistory(@PathVariable("id") Long id) {
-        // Get History:
         List<NotesHistory> history = repository.listNotesHistoryAudit(id);
 
-        // Return the DTO List:
         return history.stream()
                 .map(Converters::convert)
                 .collect(Collectors.toList());

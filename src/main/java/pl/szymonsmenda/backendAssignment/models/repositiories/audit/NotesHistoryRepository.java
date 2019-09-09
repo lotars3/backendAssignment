@@ -6,8 +6,8 @@ import org.hibernate.envers.query.AuditEntity;
 import org.hibernate.envers.query.AuditQuery;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import pl.szymonsmenda.backendAssignment.models.audit.model.AuditQueryResult;
-import pl.szymonsmenda.backendAssignment.models.audit.model.AuditQueryUtils;
+import pl.szymonsmenda.backendAssignment.models.audit.AuditQueryResult;
+import pl.szymonsmenda.backendAssignment.models.audit.AuditQueryUtils;
 import pl.szymonsmenda.backendAssignment.models.entites.NotesEntity;
 import pl.szymonsmenda.backendAssignment.models.entites.NotesHistory;
 
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class NotesHistoryRepository implements  INotesHistoryRepository {
+public class NotesHistoryRepository implements INotesHistoryRepository {
 
     @PersistenceContext
     private EntityManager entityManager;

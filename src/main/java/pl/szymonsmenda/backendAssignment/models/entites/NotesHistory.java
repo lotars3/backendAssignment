@@ -2,6 +2,7 @@ package pl.szymonsmenda.backendAssignment.models.entites;
 
 import lombok.Data;
 import org.hibernate.envers.RevisionType;
+
 @Data
 public class NotesHistory {
 

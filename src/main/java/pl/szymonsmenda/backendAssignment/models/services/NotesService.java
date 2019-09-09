@@ -10,15 +10,15 @@ public class NotesService {
     @Autowired
     private NotesRepository NotesRepository;
 
-    public Iterable<NotesEntity> getAllNotes(){
+    public Iterable<NotesEntity> getAllNotes() {
         return NotesRepository.findAll();
     }
 
-    public void saveNotes(NotesEntity notesEntity){
+    public void saveNotes(NotesEntity notesEntity) {
         NotesRepository.save(notesEntity);
     }
 
-    public void deleteNoteById(long id){
+    public void deleteNoteById(long id) {
         NotesRepository.deleteById(id);
     }
 
