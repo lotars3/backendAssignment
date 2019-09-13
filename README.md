@@ -1,6 +1,6 @@
 # backendAssignment
 
-SQL Query for setup database
+SQL Query for setup database "backenddeveloperassignment"
 
 REVINFO
 CREATE TABLE `revinfo` (
