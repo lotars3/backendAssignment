@@ -1,6 +1,6 @@
 # backendAssignment
 
-SQL Query for setup database "backenddeveloperassignment"
+SQL Query for setup phpMyAdmin Mysql database "backenddeveloperassignment"
 
 REVINFO
 CREATE TABLE `revinfo` (
