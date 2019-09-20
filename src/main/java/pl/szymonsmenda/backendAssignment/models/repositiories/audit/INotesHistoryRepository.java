@@ -8,5 +8,5 @@ import java.util.List;
 @Repository
 public interface INotesHistoryRepository {
 
-    List<NoteHistory> listNotesHistoryAudit(Long id);
+    List<NoteHistory> listNotesHistoryAudit(long id);
 }

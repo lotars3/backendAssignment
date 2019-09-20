@@ -6,9 +6,9 @@ import java.util.Optional;
 
 public interface INotesService {
 
-    Iterable<NoteEntity> getAllNotes();
+    Optional<NoteEntity> findById(long id);
 
-    Optional<NoteEntity> getOneNote(Long id);
+    Iterable<NoteEntity> getAllNotes();
 
     void saveNotes(NoteEntity noteEntity);
 

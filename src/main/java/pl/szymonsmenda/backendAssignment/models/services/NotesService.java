@@ -12,13 +12,14 @@ public class NotesService implements INotesService {
     @Autowired
     private NotesRepository NotesRepository;
 
+
     @Override
     public Iterable<NoteEntity> getAllNotes() {
         return NotesRepository.findAll();
     }
 
     @Override
-    public Optional<NoteEntity> getOneNote(Long id) {
+    public Optional<NoteEntity> findById(long id) {
         return NotesRepository.findById(id);
     }
 
@@ -36,4 +37,6 @@ public class NotesService implements INotesService {
     public boolean existsById(long id) {
         return NotesRepository.existsById(id);
     }
+
+
 }

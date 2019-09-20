@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.szymonsmenda.backendAssignment.models.ResourceNotFoundException;
 import pl.szymonsmenda.backendAssignment.models.services.Converters;
 import pl.szymonsmenda.backendAssignment.models.dto.NoteHistoryDto;
 import pl.szymonsmenda.backendAssignment.models.entites.NoteHistory;
@@ -24,9 +25,11 @@ public class NoteHistoryRestController {
     }
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public List<NoteHistoryDto> getHistory(@PathVariable("id") Long id) {
+    public List<NoteHistoryDto> getHistory(@PathVariable("id") long id) throws ResourceNotFoundException {
         List<NoteHistory> history = repository.listNotesHistoryAudit(id);
-
+        if (history.isEmpty()){
+            throw new ResourceNotFoundException("Empty history");
+        }
         return history.stream()
                 .map(Converters::convert)
                 .collect(Collectors.toList());

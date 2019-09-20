@@ -23,7 +23,7 @@ public class NotesHistoryRepository implements INotesHistoryRepository {
     private EntityManager entityManager;
 
     @Transactional(readOnly = true)
-    public List<NoteHistory> listNotesHistoryAudit(Long id) {
+    public List<NoteHistory> listNotesHistoryAudit(long id) {
         AuditReader auditReader = AuditReaderFactory.get(entityManager);
         AuditQuery auditQuery = auditReader.createQuery()
                 .forRevisionsOfEntity(NoteEntity.class, false, true)
