@@ -4,9 +4,9 @@ import lombok.Data;
 import org.hibernate.envers.RevisionType;
 
 @Data
-public class NotesHistory {
+public class NoteHistory {
 
-    private final NotesEntity notesEntity;
+    private final NoteEntity noteEntity;
     private final Number revision;
     private final RevisionType revisionType;
 }

@@ -1,12 +1,12 @@
 package pl.szymonsmenda.backendAssignment.models.repositiories.audit;
 
 import org.springframework.stereotype.Repository;
-import pl.szymonsmenda.backendAssignment.models.entites.NotesHistory;
+import pl.szymonsmenda.backendAssignment.models.entites.NoteHistory;
 
 import java.util.List;
 
 @Repository
 public interface INotesHistoryRepository {
 
-    List<NotesHistory> listNotesHistoryAudit(Long id);
+    List<NoteHistory> listNotesHistoryAudit(Long id);
 }

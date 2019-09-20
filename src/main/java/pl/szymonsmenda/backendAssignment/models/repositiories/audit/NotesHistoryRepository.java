@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import pl.szymonsmenda.backendAssignment.models.audit.AuditQueryResult;
 import pl.szymonsmenda.backendAssignment.models.audit.AuditQueryUtils;
-import pl.szymonsmenda.backendAssignment.models.entites.NotesEntity;
-import pl.szymonsmenda.backendAssignment.models.entites.NotesHistory;
+import pl.szymonsmenda.backendAssignment.models.entites.NoteEntity;
+import pl.szymonsmenda.backendAssignment.models.entites.NoteHistory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,22 +23,19 @@ public class NotesHistoryRepository implements INotesHistoryRepository {
     private EntityManager entityManager;
 
     @Transactional(readOnly = true)
-    public List<NotesHistory> listNotesHistoryAudit(Long id) {
+    public List<NoteHistory> listNotesHistoryAudit(Long id) {
         AuditReader auditReader = AuditReaderFactory.get(entityManager);
-
         AuditQuery auditQuery = auditReader.createQuery()
-                .forRevisionsOfEntity(NotesEntity.class, false, true)
+                .forRevisionsOfEntity(NoteEntity.class, false, true)
                 .add(AuditEntity.id().eq(id));
 
-        return AuditQueryUtils.getAuditQueryResults(auditQuery, NotesEntity.class).stream()
-                // Turn into the CustomerHistory Domain Object:
+        return AuditQueryUtils.getAuditQueryResults(auditQuery, NoteEntity.class).stream()
                 .map(x -> getCustomerHistory(x))
-                // And collect the Results:
                 .collect(Collectors.toList());
     }
 
-    private static NotesHistory getCustomerHistory(AuditQueryResult<NotesEntity> auditQueryResult) {
-        return new NotesHistory(
+    private static NoteHistory getCustomerHistory(AuditQueryResult<NoteEntity> auditQueryResult) {
+        return new NoteHistory(
                 auditQueryResult.getEntity(),
                 auditQueryResult.getRevision().getRevisionNumber(),
                 auditQueryResult.getType()

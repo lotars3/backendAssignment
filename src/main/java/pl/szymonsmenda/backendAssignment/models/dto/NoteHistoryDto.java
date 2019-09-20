@@ -1,22 +1,22 @@
-package pl.szymonsmenda.backendAssignment.models.Dto;
+package pl.szymonsmenda.backendAssignment.models.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class NotesHistoryDto {
+public class NoteHistoryDto {
 
-    private final NotesDto notesDto;
+    private final NoteDto noteDto;
     private final Long revision;
     private final RevisionTypeDto type;
 
-    public NotesHistoryDto(NotesDto notesDto, Long revision, RevisionTypeDto type) {
-        this.notesDto = notesDto;
+    public NoteHistoryDto(NoteDto noteDto, Long revision, RevisionTypeDto type) {
+        this.noteDto = noteDto;
         this.revision = revision;
         this.type = type;
     }
 
-    @JsonProperty("notesDto")
-    public NotesDto getNotesDto() {
-        return notesDto;
+    @JsonProperty("noteDto")
+    public NoteDto getNoteDto() {
+        return noteDto;
     }
 
     @JsonProperty("revision")

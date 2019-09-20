@@ -1,27 +1,25 @@
-package pl.szymonsmenda.backendAssignment.models.Dto;
+package pl.szymonsmenda.backendAssignment.models.services;
 
 import org.hibernate.envers.RevisionType;
-import pl.szymonsmenda.backendAssignment.models.entites.NotesEntity;
-import pl.szymonsmenda.backendAssignment.models.entites.NotesHistory;
+import pl.szymonsmenda.backendAssignment.models.dto.NoteDto;
+import pl.szymonsmenda.backendAssignment.models.dto.NoteHistoryDto;
+import pl.szymonsmenda.backendAssignment.models.dto.RevisionTypeDto;
+import pl.szymonsmenda.backendAssignment.models.entites.NoteEntity;
+import pl.szymonsmenda.backendAssignment.models.entites.NoteHistory;
 
 public class Converters {
 
-    public static NotesDto convert(NotesEntity source) {
-
+    public static NoteDto convert(NoteEntity source) {
         if (source == null) {
             return null;
         }
-
-        return new NotesDto(source.getId(), source.getContent(), source.getTitle());
+        return new NoteDto(source.getId(), source.getContent(), source.getTitle());
     }
 
-
     public static RevisionTypeDto convert(RevisionType source) {
-
         if (source == null) {
             return null;
         }
-
         switch (source) {
             case ADD:
                 return RevisionTypeDto.ADD;
@@ -34,16 +32,13 @@ public class Converters {
         }
     }
 
-    public static NotesHistoryDto convert(NotesHistory source) {
-
+    public static NoteHistoryDto convert(NoteHistory source) {
         if (source == null) {
             return null;
         }
-
-        NotesDto notesDto = convert(source.getNotesEntity());
+        NoteDto noteDto = convert(source.getNoteEntity());
         Long revision = source.getRevision().longValue();
         RevisionTypeDto revisionTypeDto = convert(source.getRevisionType());
-
-        return new NotesHistoryDto(notesDto, revision, revisionTypeDto);
+        return new NoteHistoryDto(noteDto, revision, revisionTypeDto);
     }
 }

@@ -1,14 +1,14 @@
-package pl.szymonsmenda.backendAssignment.models.Dto;
+package pl.szymonsmenda.backendAssignment.models.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class NotesDto {
+public class NoteDto {
 
     private final Long id;
     private final String content;
     private final String title;
 
-    public NotesDto(@JsonProperty("id") Long id, @JsonProperty("content") String content, @JsonProperty("title") String title) {
+    public NoteDto(@JsonProperty("id") Long id, @JsonProperty("content") String content, @JsonProperty("title") String title) {
         this.id = id;
         this.content = content;
         this.title = title;

@@ -1,4 +1,4 @@
-package pl.szymonsmenda.backendAssignment.models.Dto;
+package pl.szymonsmenda.backendAssignment.models.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

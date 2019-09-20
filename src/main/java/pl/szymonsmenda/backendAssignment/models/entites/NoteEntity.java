@@ -16,8 +16,7 @@ import java.util.Date;
 @Table(name = "notes")
 @Audited
 @EntityListeners({AuditingEntityListener.class})
-
-public class NotesEntity implements Serializable {
+public class NoteEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
