@@ -1,6 +1,9 @@
 package pl.szymonsmenda.backendAssignment.models.entites;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.envers.Audited;
@@ -16,15 +19,18 @@ import java.util.Date;
 @Table(name = "notes")
 @Audited
 @EntityListeners({AuditingEntityListener.class})
+@RequiredArgsConstructor
+@NoArgsConstructor
 public class NoteEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
-    @Column
+
+    @NonNull
     private String title;
-    @Column
+    @NonNull
     private String content;
 
     @Column(name = "create_date", nullable = false, updatable = false)

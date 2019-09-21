@@ -9,6 +9,8 @@ import pl.szymonsmenda.backendAssignment.models.ResourceNotFoundException;
 import pl.szymonsmenda.backendAssignment.models.entites.NoteEntity;
 import pl.szymonsmenda.backendAssignment.models.services.NotesService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("rest")
 public class NoteRestController {
@@ -17,7 +19,7 @@ public class NoteRestController {
     private NotesService notesService;
 
     @GetMapping(value = "/all", produces = "application/json")
-    public ResponseEntity allNotes() {
+    public ResponseEntity <List<NoteEntity>> allNotes() {
         return ResponseEntity.ok(notesService.getAllNotes());
     }
 
