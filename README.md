@@ -1,10 +1,11 @@
 # backendAssignment
 
-1)
-Prerequisites:
+1) Prerequisites:
 Java 8
 Maven
 MySql
+
+Check 
 
 2) SQL Query to setup phpMyAdminMysql database "backenddeveloperassignment"
 
