@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Data
 @MappedSuperclass
-public class NotesAudEntity {
+public class NoteAudEntity {
     @Id
     @RevisionNumber
     @GeneratedValue

@@ -4,10 +4,10 @@ import org.hibernate.envers.RevisionType;
 import pl.szymonsmenda.backendAssignment.models.dto.NoteDto;
 import pl.szymonsmenda.backendAssignment.models.dto.NoteHistoryDto;
 import pl.szymonsmenda.backendAssignment.models.dto.RevisionTypeDto;
-import pl.szymonsmenda.backendAssignment.models.entites.NoteEntity;
-import pl.szymonsmenda.backendAssignment.models.entites.NoteHistory;
+import pl.szymonsmenda.backendAssignment.models.entity.NoteEntity;
+import pl.szymonsmenda.backendAssignment.models.entity.NoteHistory;
 
-public class Converters {
+public class ConvertService {
 
     public static NoteDto convert(NoteEntity source) {
         if (source == null) {

@@ -12,5 +12,5 @@ import javax.persistence.Entity;
 @RevisionEntity
 @Data
 @Table(name = "revinfo")
-public class RevInfoEntity extends NotesAudEntity {
+public class RevInfoEntity extends NoteAudEntity {
 }

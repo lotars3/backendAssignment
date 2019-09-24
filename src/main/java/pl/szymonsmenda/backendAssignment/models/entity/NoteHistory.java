@@ -1,4 +1,4 @@
-package pl.szymonsmenda.backendAssignment.models.entites;
+package pl.szymonsmenda.backendAssignment.models.entity;
 
 import lombok.Data;
 import org.hibernate.envers.RevisionType;

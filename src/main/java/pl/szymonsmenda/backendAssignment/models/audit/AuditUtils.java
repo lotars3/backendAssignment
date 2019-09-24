@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AuditQueryUtils {
+public class AuditUtils {
 
-    private AuditQueryUtils() {
+    private AuditUtils() {
     }
 
-    public static <TTargetType> List<AuditQueryResult<TTargetType>> getAuditQueryResults(AuditQuery query, Class<TTargetType> targetType) {
+    public static <TTargetType> List<AuditResult<TTargetType>> getListAuditResults(AuditQuery query, Class<TTargetType> targetType) {
 
         List<?> results = query.getResultList();
 
@@ -21,7 +21,7 @@ public class AuditQueryUtils {
         return results.stream()
                 .filter(x -> x instanceof Object[])
                 .map(x -> (Object[]) x)
-                .map(x -> AuditQueryResultUtils.getAuditQueryResult(x, targetType))
+                .map(x -> AuditResultUtils.getAuditResult(x, targetType))
                 .collect(Collectors.toList());
     }
 }

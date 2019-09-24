@@ -4,9 +4,9 @@ import lombok.Data;
 import org.hibernate.envers.RevisionType;
 
 @Data
-public class AuditQueryResult<T> {
+public class AuditResult<T> {
 
     private final T entity;
-    private final NotesAudEntity revision;
+    private final NoteAudEntity revision;
     private final RevisionType type;
 }

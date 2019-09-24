@@ -1,4 +1,4 @@
-package pl.szymonsmenda.backendAssignment.models.entites;
+package pl.szymonsmenda.backendAssignment;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,14 +9,14 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.HttpClientErrorException;
-import pl.szymonsmenda.backendAssignment.BackendAssignmentApplication;
+import pl.szymonsmenda.backendAssignment.models.entity.NoteEntity;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BackendAssignmentApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class NoteEntityTest {
+public class NoteRestControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -48,8 +48,6 @@ public class NoteEntityTest {
     public void testGetNoteById() {
         NoteEntity note = restTemplate.getForObject(getRootUrl() + "/rest/note/5", NoteEntity.class);
         assertNotNull(note);
-        //assertNull(note);
-//java.lang.AssertionError: expected null, but was:<NoteEntity(id=null, title=null, content=null, createDate=null, lastModifiedDate=null)>
     }
 
     @Test
@@ -58,8 +56,7 @@ public class NoteEntityTest {
         note.setId(1L);
         note.setContent("test");
         note.setTitle("Testyyy");
-        ResponseEntity<NoteEntity> postResponse = restTemplate.postForEntity(getRootUrl() + "/rest/addNote", note, NoteEntity.class);
-        System.out.println(postResponse);
+        ResponseEntity<NoteEntity> postResponse = restTemplate.postForEntity(getRootUrl() + "/rest/addNote/", note, NoteEntity.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
     }
@@ -68,18 +65,18 @@ public class NoteEntityTest {
     @Test
     public void testUpdatedNote() {
         int id = 1;
-        NoteEntity note = restTemplate.getForObject(getRootUrl() + "/rest/update/" + id, NoteEntity.class);
+        NoteEntity note = restTemplate.getForObject(getRootUrl() + "/rest/updateNote/" + id, NoteEntity.class);
         note.setContent("test");
         note.setTitle("Testyyy");
         restTemplate.put(getRootUrl() + "/rest/update/" + id, note);
-        NoteEntity updatedNote = restTemplate.getForObject(getRootUrl() + "/rest/update/" + id, NoteEntity.class);
+        NoteEntity updatedNote = restTemplate.getForObject(getRootUrl() + "/rest/updateNote/" + id, NoteEntity.class);
         assertNotNull(updatedNote);
     }
 
     @Test
     public void testDeleteEmployee() {
         int id = 2;
-        NoteEntity note = restTemplate.getForObject(getRootUrl() + "/rest/update/" + id, NoteEntity.class);
+        NoteEntity note = restTemplate.getForObject(getRootUrl() + "/rest/updateNote/" + id, NoteEntity.class);
         assertNotNull(note);
         restTemplate.delete(getRootUrl() + "/rest/remove/" + id);
         try {

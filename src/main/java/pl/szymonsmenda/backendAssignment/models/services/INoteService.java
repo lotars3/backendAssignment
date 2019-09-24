@@ -1,16 +1,15 @@
 package pl.szymonsmenda.backendAssignment.models.services;
 
-import pl.szymonsmenda.backendAssignment.models.entites.NoteEntity;
+import pl.szymonsmenda.backendAssignment.models.entity.NoteEntity;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface INotesService {
+public interface INoteService {
 
-    List<NoteEntity> getAllNotes();
+    List<NoteEntity> getAllNote();
 
-
-    Optional<NoteEntity> findById(long id);
+    Optional<NoteEntity> findNoteById(long id);
 
     void saveNotes(NoteEntity noteEntity);
 
