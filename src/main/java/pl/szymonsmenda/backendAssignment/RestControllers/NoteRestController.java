@@ -30,13 +30,10 @@ public class NoteRestController {
                 .orElseThrow(() -> new ResourceNotFoundException("Not found ID: " + id));
     }
 
-    @PostMapping(value = "/addNote/{id}", consumes = "application/json")
-    public ResponseEntity addNote(@RequestBody NoteEntity noteEntity,
-                                  @PathVariable("id") long id) throws ResourceNotFoundException {
+    @PostMapping(value = "/addNote/", consumes = "application/json")
+    public ResponseEntity addNote(@RequestBody NoteEntity noteEntity) throws ResourceNotFoundException                                   {
         if (noteEntity.getTitle() == null || noteEntity.getContent() == null) {
             throw new ResourceNotFoundException("Title or Content is required");
-        } else if (noteService.findNoteById(id).isPresent()) {
-            throw new ResourceNotFoundException("This ID is already in database: " + id);
         }
         noteService.saveNotes(noteEntity);
         return ResponseEntity.status(HttpStatus.OK).body("Post successfully");

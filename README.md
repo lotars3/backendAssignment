@@ -49,9 +49,9 @@ curl -X GET http://localhost:8080/rest/note/4
 Response:
 {"id":4,"title":"Najnowsza ","content":"notatka","createDate":"2019-09-09T17:20:14.000+0000","lastModifiedDate":"2019-09-09T17:20:14.000+0000"}
 
-c) POST /rest/addNote/{id}
+c) POST /rest/addNote/
 
-curl -X POST  http://localhost:8080/rest/addNote/12
+curl -X POST  http://localhost:8080/rest/addNote/
 
 Response: Post successfully
 
